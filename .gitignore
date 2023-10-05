@@ -1,0 +1,10 @@
+﻿VST.sln
+.vsconfig
+Assembly-CSharp.csproj
+UserSettings
+Temp
+obj
+Library
+.vscode
+Logs
+.vs
