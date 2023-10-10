@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Xlab
+namespace Golf
 {
+
     public class Spawner : MonoBehaviour
     {
         public GameObject[] prefabs;
