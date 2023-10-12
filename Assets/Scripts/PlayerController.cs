@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Spawner spawner;
+    //public Spawner spawner;
     public CloudController cloudController;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        /*if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("X key down");
             spawner.Spawn();
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Z))
         {

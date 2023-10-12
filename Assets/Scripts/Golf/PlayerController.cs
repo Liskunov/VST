@@ -8,9 +8,9 @@ namespace Golf
     {
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0)) 
+            if (Input.GetMouseButtonDown(0))
             {
-                
+                Debug.Log("Mouse down!!!");
             }
         }
     }
