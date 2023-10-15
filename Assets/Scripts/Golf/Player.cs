@@ -38,11 +38,11 @@ namespace Golf
                 var dir = (helper.position - m_lastPosition).normalized;
                 body.AddForce(dir * power, ForceMode.Impulse);
 
-                if(collider.TryGetComponent(out Stone stone))
-                    {
+                //if(collider.TryGetComponent(out Spawner prefab))
+                   // {
 
-                    stone.isAfect = true;
-                }
+                    //prefab.isAfect = true;
+                
 
             }
         }

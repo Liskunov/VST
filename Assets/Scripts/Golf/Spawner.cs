@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Golf
@@ -7,31 +8,33 @@ namespace Golf
 
     public class Spawner : MonoBehaviour
     {
-        public GameObject[] prefabs;
+        
+        public GameObject prefab;
+        [SerializeField]private float dilayToStoneRespawn;
 
-        public GameObject Spawn()
+        private double time;
+        private void Start()
         {
-            var prefab = GetRandomPrefab();
+            prefab.GetComponent<Rigidbody>().isKinematic = true;
 
-            if (prefab == null)
-            {
-                Debug.LogError("Spawner - prefab == null");
-                return null;
-            }
-
-            return Instantiate(prefab, transform.position, Quaternion.identity);
+            Instantiate(prefab, transform.position, Quaternion.identity);
         }
 
-        private GameObject GetRandomPrefab()
+        private void Update()
         {
-            if (prefabs.Length == 0)
+
+            if (prefab.transform.position != transform.position)
             {
-                Debug.LogError("Spawner - prefabs is empty!");
-                return null;
+                time += Time.deltaTime;
+                Debug.Log(time);
+                if (time > dilayToStoneRespawn)
+                {
+                    prefab.transform.position = transform.position;
+                    time= 0;
+                }
             }
 
-            int index = Random.Range(0, prefabs.Length);
-            return prefabs[index];
         }
+
     }
 }

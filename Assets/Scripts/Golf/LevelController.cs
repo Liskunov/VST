@@ -23,28 +23,19 @@ namespace Golf
 
         private void OnEnable()
         {
-            Stone.onCollisionStone += GameOver;
+            
         }
 
         private void OnDisable()
         {
-            Stone.onCollisionStone -= GameOver;
+            
         }
         private void GameOver()
         {
             Debug.Log("!!! GAME OVER !!!");
             enabled = false;
         }
-        private void Update()
-        {
-            if (Time.time >= m_lastSpawnedTime + m_delay)
-                    {
-                        spawner.Spawn();
-                        m_lastSpawnedTime = Time.time;
-
-                        RefreshDelay();
-            }
-        }
+        
         public void RefreshDelay()
         {
             m_delay = UnityEngine.Random.Range(delayMin, delayMax);
