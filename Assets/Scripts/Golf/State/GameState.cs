@@ -29,7 +29,10 @@ namespace Golf
         {
             foreach (var item in vaews)
             {
-                item.SetActive(false); 
+                if (item)
+                {
+                    item.SetActive(false);
+                }
             }
             
         }

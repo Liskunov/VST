@@ -6,12 +6,17 @@ namespace Golf
 {
     public class PlayerController : MonoBehaviour
     {
-        private void Update()
+        [SerializeField] private Player player;
+
+
+        public void OnDown()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Mouse down!!!");
-            }
+            player.SetDown(true);
+        }
+
+        public void OnUp()
+        {
+            player.SetDown(false);
         }
     }
 }

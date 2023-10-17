@@ -1,45 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Golf
 {
     public class LevelController : MonoBehaviour
     {
         public Spawner spawner;
-        public float m_lastSpawnedTime = 0;
+
         public bool isGameOver = false;
-        public float m_delay = 0.5f;
-        public float delayMax = 2f;
-        public float delayMin = 0.5f;
-        public float delayStep = 0.1f;
-        
-        
+
+
+        public int score = 0;
+
+
 
         private void Start () 
         {
-            m_lastSpawnedTime = Time.time;
+            
         }
 
         private void OnEnable()
         {
-            
+            GameEvents.onStickHit += OnStickHit;
+            score = 0;
         }
 
         private void OnDisable()
         {
-            
+            GameEvents.onStickHit -= OnStickHit;
         }
-        private void GameOver()
+        private void OnStickHit()
         {
-            Debug.Log("!!! GAME OVER !!!");
-            enabled = false;
+            score++;
+
+            Debug.Log($"score: {score}");
         }
-        
-        public void RefreshDelay()
-        {
-            m_delay = UnityEngine.Random.Range(delayMin, delayMax);
-            delayMax = Mathf.Max(delayMin, delayMax - delayStep);
-        }
+
     }
 }

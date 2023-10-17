@@ -9,41 +9,41 @@ namespace Golf
     {
         public Transform stick;
         public Transform helper;
+        public Transform pricel;
         public float range = 30;
         public float speed = 500f;
         public float power = 20f;
        
 
         private bool m_isDown = false;
-        private Vector3 m_lastPosition;
 
         private void Update()
         {
-            m_lastPosition = helper.position;
-
-            m_isDown = Input.GetMouseButton(0);
 
             Quaternion rot = stick.localRotation;
-
-            Quaternion toRot = Quaternion.Euler(0,0, m_isDown ? range : -range);
+            Quaternion toRot = Quaternion.Euler(0,0, m_isDown ? -20 :  range);
 
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed *  Time.deltaTime);
 
+        }
+
+        public void SetDown(bool value)
+        {
+            m_isDown = value;
         }
 
         public void OnCollisionStick(Collider collider)
         {
             if (collider.TryGetComponent(out Rigidbody body))
             {
-                var dir = (helper.position - m_lastPosition).normalized;
-                body.AddForce(dir * power, ForceMode.Impulse);
-
-                //if(collider.TryGetComponent(out Spawner prefab))
-                   // {
-
-                    //prefab.isAfect = true;
                 
+                var dir = (pricel.position - helper.position).normalized;
+                body.AddForce(dir * power, ForceMode.Impulse);  
 
+                if (TryGetComponent(out Stone stone)) 
+                {
+                    GameEvents.StickHit();
+                }
             }
         }
     }

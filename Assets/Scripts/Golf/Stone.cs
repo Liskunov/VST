@@ -7,16 +7,13 @@ namespace Golf
 
     public class Stone : MonoBehaviour
     {
-        public bool isAfect = false;
+
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.TryGetComponent(out Stone other))
+            if (collision.gameObject.tag == "palka")
             {
-                if (!other.isAfect)
-                {
-                    GameEvents.CollisionStonesInvoke(collision);
-                }
+                GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }

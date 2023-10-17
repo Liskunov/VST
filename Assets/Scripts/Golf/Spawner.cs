@@ -11,25 +11,34 @@ namespace Golf
         
         public GameObject prefab;
         [SerializeField]private float dilayToStoneRespawn;
+        [SerializeField] private GameObject spot;
 
         private double time;
+
+        public void RigidBodyOff()
+        {
+            spot.GetComponent<Rigidbody>().useGravity = false;
+            spot.GetComponent<Rigidbody>().isKinematic = true;
+            spot.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        
         private void Start()
         {
-            prefab.GetComponent<Rigidbody>().isKinematic = true;
-
-            Instantiate(prefab, transform.position, Quaternion.identity);
+            RigidBodyOff();      
         }
 
         private void Update()
         {
-
-            if (prefab.transform.position != transform.position)
+            
+            if (spot.transform.position != transform.position)
             {
                 time += Time.deltaTime;
-                Debug.Log(time);
+               //Debug.Log(time);
                 if (time > dilayToStoneRespawn)
                 {
-                    prefab.transform.position = transform.position;
+                    RigidBodyOff();
+                    spot.transform.position = transform.position;
                     time= 0;
                 }
             }
