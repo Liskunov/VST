@@ -23,7 +23,7 @@ namespace Golf
             Quaternion rot = stick.localRotation;
             Quaternion toRot = Quaternion.Euler(0,0, m_isDown ? -20 :  range);
 
-            stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed *  Time.deltaTime);
+            stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed *  Time.fixedDeltaTime);
 
         }
 
