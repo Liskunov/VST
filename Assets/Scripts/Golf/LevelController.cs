@@ -16,10 +16,7 @@ namespace Golf
 
 
 
-        private void Start () 
-        {
-            
-        }
+        
 
         private void OnEnable()
         {
