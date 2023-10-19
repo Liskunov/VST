@@ -21,22 +21,22 @@ namespace Golf
 
         public void LeftUp()
         {
-            rotation.LeftRotat(false);
+            rotation.LeftRotate(false);
         }
 
         public void LeftDown()
         {
-            rotation.LeftRotat(true);
+            rotation.LeftRotate(true);
         }
 
         public void RightUp() 
         {
-            rotation.RightRotat(false);
+            rotation.RightRotate(false);
         }
 
         public void RightDown()
         {
-            rotation.RightRotat(true);
+            rotation.RightRotate(true);
         }
     }
 }

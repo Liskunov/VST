@@ -7,20 +7,44 @@ namespace Golf
     
     public class Rotation : MonoBehaviour
     {
-        private bool l_isDown = false;
-        private bool r_isDown = false;
-        public void LeftRotat(bool volue)
+        private Vector3 m_LeftRotate;
+        private Vector3 m_RightRotate;
+        private bool m_needRightRotate;
+        private bool m_needLeftRotate;
+
+        private void Start()
         {
-            l_isDown = volue;
-            transform.Rotate(0, -1, 0);
+            m_LeftRotate = new Vector3(0, -1, 0);
+            m_RightRotate = new Vector3(0, 1, 0);
+            m_needLeftRotate = false;
+            m_needRightRotate = false;
+        }
+        
+
+        public void LeftRotate(bool value)
+        {
+            m_needLeftRotate = value;
+            Debug.Log("LeftRotate");
         }
 
-        public void RightRotat(bool volue)
+        public void RightRotate(bool value)
         {
-            r_isDown = volue;
-            transform.Rotate(0, 1, 0);
-        }
+            m_needRightRotate = value;
+            Debug.Log($"RightRotate {value}");
 
+        }
+        private void FixedUpdate()
+        {
+            if(m_needLeftRotate) 
+            {
+                transform.Rotate(m_LeftRotate);
+            }
+
+            if(m_needRightRotate)
+            {
+                transform.Rotate(m_RightRotate);
+            }
+        }
 
     }
 }

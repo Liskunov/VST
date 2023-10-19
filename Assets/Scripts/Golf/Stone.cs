@@ -19,6 +19,7 @@ namespace Golf
             if (collision.gameObject.CompareTag("TargetCube"))
             {
                 collision.gameObject.GetComponent<Renderer>().material.color = new Vector4(0, 0, 0, 0.5f);
+                collision.gameObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
     }
