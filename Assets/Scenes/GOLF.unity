@@ -9901,13 +9901,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034237929}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7715136, z: 0, w: 0.6362129}
   m_LocalPosition: {x: -3.32, y: 0, z: 5.359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1997819518}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -100.98, z: 0}
 --- !u!1001 &1036690457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12712,7 +12712,7 @@ MonoBehaviour:
   startPosition: {fileID: 1034237929}
   menuPosition: {fileID: 1394800832}
   isGameOver: 0
-  score: 11
+  score: 0
   vaews:
   - {fileID: 1911062245}
   - {fileID: 1160989599}
@@ -12726,7 +12726,6 @@ MonoBehaviour:
   - {fileID: 972942006}
   targets_Tutuorial_Part1:
   - {fileID: 1911062245}
-  - {fileID: 633612353}
   targets_Tutuorial_Part2:
   - {fileID: 1160989599}
   - {fileID: 716452983}

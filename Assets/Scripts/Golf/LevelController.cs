@@ -15,7 +15,7 @@ namespace Golf
         public bool isGameOver = false;
 
 
-        public int score = 0;
+        public int targets = 0;
 
         public List<GameObject> vaews;
         public List<GameObject> targets_Tutuorial_Part1;
@@ -54,6 +54,7 @@ namespace Golf
                     item.GetComponent<BoxCollider>().enabled = true;
                 }
             }
+            targets = 1;
         }
 
         public void TutorialPart2()
@@ -66,6 +67,7 @@ namespace Golf
                     item.GetComponent<BoxCollider>().enabled = true;
                 }
             }
+            targets = 2;
         }
 
         public void TutorialPart3()
@@ -78,6 +80,7 @@ namespace Golf
                     item.GetComponent<BoxCollider>().enabled = true;
                 }
             }
+            targets = 1;
         }
 
         public void Level_1()

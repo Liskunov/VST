@@ -7,7 +7,7 @@ namespace Golf
 
     public class Stone : MonoBehaviour
     {
-
+        public LevelController controller;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -20,7 +20,9 @@ namespace Golf
             {
                 collision.gameObject.GetComponent<Renderer>().material.color = new Vector4(0, 0, 0, 0.5f);
                 collision.gameObject.GetComponent<BoxCollider>().enabled = false;
+                controller.targets--;
             }
+
         }
     }
 }
