@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using TMPro;
 
 namespace Golf
 {
@@ -12,9 +13,15 @@ namespace Golf
         public Transform pricel;
         public float range = 30;
         public float speed = 500f;
-        public float power = 20f;
+        public float power = 5f;
         //private bool moving;
-       
+        public TMP_Text powerText;
+
+        private void Awake()
+        {
+            powerText.text = $"Power : {power}";
+        }
+
 
         private bool m_isDown = false;
 
@@ -34,6 +41,18 @@ namespace Golf
         {
             //moving = !value;
             m_isDown = value;
+        }
+
+        public void PowerUp()
+        {
+            power = power + 1.0f;
+            powerText.text = $"Power : {power}";
+        }
+
+        public void PowerDown()
+        {
+            power = power - 1.0f;
+            powerText.text = $"Power : {power}";
         }
 
         public void OnCollisionStick(Collider collider)

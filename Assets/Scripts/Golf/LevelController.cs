@@ -50,8 +50,8 @@ namespace Golf
             {
                 if (item)
                 {
-                    item.SetActive(true);
-                    item.GetComponent<BoxCollider>().enabled = true;
+                    item.gameObject.SetActive(true);
+                    item.gameObject.GetComponent<BoxCollider>().enabled = true;
                 }
             }
             targets = 1;
@@ -63,8 +63,8 @@ namespace Golf
             {
                 if (item)
                 {
-                    item.SetActive(true);
-                    item.GetComponent<BoxCollider>().enabled = true;
+                    item.gameObject.SetActive(true);
+                    item.gameObject.GetComponent<BoxCollider>().enabled = true;
                 }
             }
             targets = 2;
@@ -102,7 +102,7 @@ namespace Golf
         private void OnEnable()
         {
             GameEvents.onStickHit += OnStickHit;
-            score = 0;
+            //score = 0;
         }
 
         private void OnDisable()
@@ -111,9 +111,9 @@ namespace Golf
         }
         private void OnStickHit()
         {
-            score++;
+           // score++;
 
-            Debug.Log($"score: {score}");
+            //Debug.Log($"score: {score}");
         }
 
     }
