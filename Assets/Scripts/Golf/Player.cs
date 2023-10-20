@@ -13,6 +13,7 @@ namespace Golf
         public float range = 30;
         public float speed = 500f;
         public float power = 20f;
+        //private bool moving;
        
 
         private bool m_isDown = false;
@@ -25,18 +26,20 @@ namespace Golf
 
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed *  Time.fixedDeltaTime);
 
+            //if (moving) 
+            
         }
 
         public void SetDown(bool value)
         {
+            //moving = !value;
             m_isDown = value;
         }
 
         public void OnCollisionStick(Collider collider)
         {
             if (collider.TryGetComponent(out Rigidbody body))
-            {
-                
+            {                
                 var dir = (pricel.position - helper.position).normalized;
                 body.AddForce(dir * power, ForceMode.Impulse);  
 
