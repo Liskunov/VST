@@ -1,40 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 namespace Golf
 {
     public class LevelController : MonoBehaviour
     {
-        public Spawner spawner;
+
         public GameObject player;
-        public GameObject startPosition;
+        public GameObject startTutorial;
+        public GameObject start1Level;
         public GameObject menuPosition;
 
-        public bool isGameOver = false;
-
+        public TMP_Text targetsText;
 
         public int targets = 0;
+        public int levelN = 0;
 
         public List<GameObject> vaews;
-        public List<GameObject> targets_Tutuorial_Part1;
-        public List<GameObject> targets_Tutuorial_Part2;
-        public List<GameObject> targets_Tutuorial_Part3;
-        public List<GameObject> targets_Level_1;
-
+        public List<GameObject> targets_Tutuorial;
+        public List<GameObject> targets_Level_1;       
 
         public void ButtonStart()
         {
-            TutorialPart1();
-            player.transform.position = startPosition.transform.position;
-            player.transform.rotation = startPosition.transform.rotation;
+            RunTutorial();
+            player.transform.position = startTutorial.transform.position;
+            player.transform.rotation = startTutorial.transform.rotation;
         }
-        public void Menu() 
-        {
-            player.transform.position = menuPosition.transform.position;
-            player.transform.rotation = menuPosition.transform.rotation;
 
+        public void SetNoActive()
+        {
             foreach (var item in vaews)
             {
                 if (item)
@@ -44,54 +40,42 @@ namespace Golf
             }
         }
 
-        public void TutorialPart1()
+        public void RunMenu() 
         {
-            foreach (var item in targets_Tutuorial_Part1)
-            {
-                if (item)
-                {
-                    item.gameObject.SetActive(true);
-                    item.gameObject.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-            targets = 1;
+            player.transform.position = menuPosition.transform.position;
+            player.transform.rotation = menuPosition.transform.rotation;
+
+            SetNoActive();
         }
 
-        public void TutorialPart2()
+        public void RunTutorial()
         {
-            foreach (var item in targets_Tutuorial_Part2)
-            {
-                if (item)
-                {
-                    item.gameObject.SetActive(true);
-                    item.gameObject.GetComponent<BoxCollider>().enabled = true;
-                }
-            }
-            targets = 2;
-        }
-
-        public void TutorialPart3()
-        {
-            foreach (var item in targets_Tutuorial_Part3)
+            targets = 3;
+            foreach (var item in targets_Tutuorial)
             {
                 if (item)
                 {
                     item.SetActive(true);
                     item.GetComponent<BoxCollider>().enabled = true;
+                    item.GetComponent<Renderer>().material.color = new Vector4(0, 0.165f, 0.737f, 1.0f);
                 }
             }
-            targets = 1;
+            
         }
 
-        public void Level_1()
+        public void RunLevel_1()
         {
-            Menu();
+            player.transform.position = start1Level.transform.position;
+            player.transform.rotation = start1Level.transform.rotation;
+            targets = 5;
+            SetNoActive();
             foreach (var item in targets_Level_1)
             {
                 if (item)
                 {
                     item.SetActive(true);
                     item.GetComponent<BoxCollider>().enabled = true;
+                    item.GetComponent<Renderer>().material.color = new Vector4(0, 0.165f, 0.737f, 1.0f);
                 }
             }
 
@@ -99,21 +83,14 @@ namespace Golf
 
 
 
-        private void OnEnable()
+        private void Update()
         {
-            GameEvents.onStickHit += OnStickHit;
-            //score = 0;
-        }
-
-        private void OnDisable()
-        {
-            GameEvents.onStickHit -= OnStickHit;
-        }
-        private void OnStickHit()
-        {
-           // score++;
-
-            //Debug.Log($"score: {score}");
+            targetsText.text = $"Целей осталось: {targets}"; 
+            if (targets == 0)
+            {
+                
+                GameEvents.LevelComplete();
+            }
         }
 
     }

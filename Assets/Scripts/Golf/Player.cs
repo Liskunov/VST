@@ -14,7 +14,6 @@ namespace Golf
         public float range = 30;
         public float speed = 500f;
         public float power = 5f;
-        //private bool moving;
         public TMP_Text powerText;
 
         private void Awake()
@@ -33,13 +32,11 @@ namespace Golf
 
             stick.localRotation = Quaternion.RotateTowards(rot, toRot, speed *  Time.fixedDeltaTime);
 
-            //if (moving) 
             
         }
 
         public void SetDown(bool value)
         {
-            //moving = !value;
             m_isDown = value;
         }
 
@@ -61,11 +58,6 @@ namespace Golf
             {                
                 var dir = (pricel.position - helper.position).normalized;
                 body.AddForce(dir * power, ForceMode.Impulse);  
-
-                if (TryGetComponent(out Stone stone)) 
-                {
-                    GameEvents.StickHit();
-                }
             }
         }
     }

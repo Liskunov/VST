@@ -8,6 +8,7 @@ namespace Golf
     {
         public static event System.Action onCollisionStones;
         public static event System.Action onStickHit;
+        public static event System.Action onLevelComplete;
 
         public static void CollisionStonesInvoke(Collision collision)
         {
@@ -17,6 +18,11 @@ namespace Golf
         public static void StickHit()
         {
             onStickHit?.Invoke();
+        }
+
+        public static void LevelComplete() 
+        {
+            onLevelComplete?.Invoke();
         }
     }
 }
