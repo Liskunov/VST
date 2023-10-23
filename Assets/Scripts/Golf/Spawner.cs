@@ -13,7 +13,7 @@ namespace Golf
         [SerializeField]private float dilayToStoneRespawn;
         [SerializeField] private GameObject spot;
 
-        private double time;
+        public double time;
 
         public void RigidBodyOff()
         {
@@ -34,7 +34,6 @@ namespace Golf
             if (spot.transform.position != transform.position)
             {
                 time += Time.deltaTime;
-               //Debug.Log(time);
                 if (time > dilayToStoneRespawn)
                 {
                     RigidBodyOff();

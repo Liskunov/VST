@@ -46,6 +46,10 @@ namespace Golf
             powerText.text = $"Power : {power}";
         }
 
+        public void RefreshPower()
+        {
+            powerText.text = $"Power : {power}";
+        }
         public void PowerDown()
         {
             power = power - 1.0f;

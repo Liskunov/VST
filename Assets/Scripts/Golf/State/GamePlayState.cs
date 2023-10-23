@@ -11,12 +11,14 @@ namespace Golf
         public TMP_Text targetText;
         public GameState levelCompleteState;
         public LevelController levelController;
+        public GameState gameOverState;
 
         protected override void OnEnable()
         {
             base.OnEnable();
             GameEvents.onStickHit += OnStickHit;
             GameEvents.onLevelComplete += OnLevelComplete;
+            GameEvents.onGameOver += OnGameOver;
         }
 
         private void OnStickHit()
@@ -25,14 +27,22 @@ namespace Golf
         }
         private void OnLevelComplete()
         {
+            levelController.levelN++;
             Exit();
             levelCompleteState.Enter();
+        }
+
+        private void OnGameOver()
+        {
+            Exit();
+            gameOverState.Enter();
         }
         protected override void OnDisable()
         {
             base.OnDisable();
             GameEvents.onStickHit -= OnStickHit;
             GameEvents.onLevelComplete -= OnLevelComplete;
+            GameEvents.onGameOver -= OnGameOver;
         }
     }
 }

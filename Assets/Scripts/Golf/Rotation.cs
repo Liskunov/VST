@@ -11,8 +11,8 @@ namespace Golf
 
         private void Start()
         {
-            m_LeftRotate  = new Vector3(0, -1, 0);
-            m_RightRotate = new Vector3(0,  1, 0);
+            m_LeftRotate  = new Vector3(0, -0.5f, 0);
+            m_RightRotate = new Vector3(0,  0.5f, 0);
             m_needLeftRotate  = false;
             m_needRightRotate = false;
         }       

@@ -7,7 +7,7 @@ TagManager:
   - ball
   - palka
   - TargetCube
-  - TargetVaza
+  - GameOver
   layers:
   - Default
   - TransparentFX

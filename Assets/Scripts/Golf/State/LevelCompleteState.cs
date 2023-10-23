@@ -7,13 +7,21 @@ namespace Golf
     public class LevelCompliteState : GameState
     {
         public GameState gamePlayState;
+        public GameState gameFinishStateFake;
         public LevelController levelController;
 
         public void NextLevel()
         {
-            levelController.levelN++;
-            Exit();
-            gamePlayState.Exit();
+            if (levelController.levelN < 3)
+            {
+                Exit();
+                gamePlayState.Enter();
+            }
+            else
+            {
+                Exit();
+                gameFinishStateFake.Enter();
+            }
         }
     }
 }
