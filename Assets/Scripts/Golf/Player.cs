@@ -12,7 +12,7 @@ namespace Golf
         public Transform helper;
         public Transform pricel;
         public float range = 30;
-        public float speed = 500f;
+        public float speed = 666f;
         public float power = 5f;
         public TMP_Text powerText;
 
